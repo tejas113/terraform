@@ -1,5 +1,5 @@
 resource "aws_instance" "db" {
-  count                  = 3
+  count                  = length(var.instance_names)
   ami                    = "ami-08cc00f145da732e4"
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
