@@ -6,21 +6,22 @@ resource "aws_instance" "db" {
 }
 
 resource "aws_security_group" "allow_ssh" {
-  name        = "allow_ssh"
-  description = "Allowing SSH access"
+  name        = var.sg_name
+  description = var.sg_description
 
+  #this is block 
   ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = var.ssh_port
+    to_port     = var.ssh_port
+    protocol    = var.protocol
+    cidr_blocks = var.allow_cidr
   }
 
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.allow_cidr
   }
 
 
