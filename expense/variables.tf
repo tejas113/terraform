@@ -1,3 +1,4 @@
+#ec2_variable
 variable "instance_names" {
   type    = list(string)
   default = ["db", "backend", "frontend"]
@@ -22,6 +23,7 @@ variable "common_tags" {
   }
 }
 
+#sg variable
 variable "sg_name" {
   default = "allow_ssh"
 }
@@ -41,4 +43,13 @@ variable "protocol" {
 variable "allow_cidr" {
   type    = list(string)
   default = ["0.0.0.0/0"]
+}
+
+#route53 variables
+variable "zone_id" {
+  default = "Z02988342TBOGVKLORIWM"
+}
+
+variable "domain_name" {
+  default = "tejaskalla.online"
 }
